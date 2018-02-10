@@ -1,0 +1,252 @@
+Option Explicit
+
+Dim num_1 As Double
+Dim num_2 As Double
+Dim result As Double
+Dim operators As String
+
+
+Private Sub UserForm_Initialize()
+
+'Fill flag
+With flag
+    .AddItem "0-ЕГН"
+    .AddItem "2-ЛНЧ или Служебен номер"
+End With
+
+
+'Set Focus on company_name
+company_name.SetFocus
+
+End Sub
+Private Sub CancelButton_Click()
+
+Unload Me
+
+End Sub
+
+Private Sub clearBlock1_Click()
+'company_name,code,ordinal_number
+company_name.Text = ""
+code.Text = ""
+ordinal_number.Text = ""
+
+End Sub
+
+Private Sub clearBlock2_Click()
+'year,month,id_n,r,o,m,b,d,a,s,n,baza_pgo
+'id_n,egn,flag,last_name,initials,gross_salary,experience_years,b_year,type_ens,proff_code,activity_code
+'danni osiguren
+id_n.Text = ""
+egn.Text = ""
+flag.Text = ""
+last_name.Text = ""
+initials.Text = ""
+gross_salary.Text = ""
+experience_years.Text = ""
+b_year.Text = ""
+type_ens.Text = ""
+proff_code.Text = ""
+activity_code.Text = ""
+'forma76
+year.Text = ""
+month.Text = ""
+id_n.Text = ""
+r.Text = ""
+o.Text = ""
+m.Text = ""
+b.Text = ""
+d.Text = ""
+a.Text = ""
+s.Text = ""
+n.Text = ""
+baza_pgo.Text = ""
+
+
+End Sub
+Private Sub insertData_Click()
+'year,month,id_n,r,o,m,b,d,a,s,n,baza_pgo
+'id_n,egn,flag,last_name,initials,gross_salary,experience_years,b_year,type_ens,proff_code,activity_code
+'company_name,code,ordinal_number
+Dim wks As Worksheet
+Dim AddNew As Range
+Set wks = Sheet1
+Set AddNew = wks.Range("A65356").End(xlUp).Offset(1, 0)
+
+AddNew.Offset(0, 0).Value = Now
+'danni osiguritel
+AddNew.Offset(0, 1).Value = company_name.Text
+AddNew.Offset(0, 2).Value = code.Text
+AddNew.Offset(0, 3).Value = ordinal_number.Text
+'danni osiguren
+AddNew.Offset(0, 4).Value = id_n.Text
+AddNew.Offset(0, 5).Value = egn.Text
+AddNew.Offset(0, 6).Value = flag.Text
+AddNew.Offset(0, 7).Value = last_name.Text
+AddNew.Offset(0, 8).Value = initials.Text
+AddNew.Offset(0, 9).Value = gross_salary.Text
+AddNew.Offset(0, 10).Value = experience_years.Text
+AddNew.Offset(0, 11).Value = b_year.Text
+AddNew.Offset(0, 12).Value = type_ens.Text
+AddNew.Offset(0, 13).Value = proff_code.Text
+AddNew.Offset(0, 14).Value = activity_code.Text
+'danni forma76
+AddNew.Offset(0, 15).Value = year.Text
+AddNew.Offset(0, 16).Value = month.Text
+AddNew.Offset(0, 17).Value = id_n.Text
+AddNew.Offset(0, 18).Value = r.Text
+AddNew.Offset(0, 19).Value = o.Text
+AddNew.Offset(0, 20).Value = m.Text
+AddNew.Offset(0, 21).Value = b.Text
+AddNew.Offset(0, 22).Value = d.Text
+AddNew.Offset(0, 23).Value = a.Text
+AddNew.Offset(0, 24).Value = s.Text
+AddNew.Offset(0, 25).Value = n.Text
+AddNew.Offset(0, 26).Value = baza_pgo.Text
+
+
+
+End Sub
+
+Private Sub cmd_dec_sep_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "0."
+Else
+txtDisplay.Text = txtDisplay.Text & "."
+End If
+End Sub
+
+Private Sub cmd0_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "0"
+Else
+txtDisplay.Text = txtDisplay.Text & "0"
+End If
+End Sub
+
+Private Sub cmd1_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "1"
+Else
+txtDisplay.Text = txtDisplay.Text & "1"
+End If
+End Sub
+
+Private Sub cmd2_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "2"
+Else
+txtDisplay.Text = txtDisplay.Text & "2"
+End If
+End Sub
+
+Private Sub cmd3_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "3"
+Else
+txtDisplay.Text = txtDisplay.Text & "3"
+End If
+End Sub
+
+Private Sub cmd4_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "4"
+Else
+txtDisplay.Text = txtDisplay.Text & "4"
+End If
+End Sub
+
+Private Sub cmd5_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "5"
+Else
+txtDisplay.Text = txtDisplay.Text & "5"
+End If
+End Sub
+
+Private Sub cmd6_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "6"
+Else
+txtDisplay.Text = txtDisplay.Text & "6"
+End If
+End Sub
+
+Private Sub cmd7_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "7"
+Else
+txtDisplay.Text = txtDisplay.Text & "7"
+End If
+
+
+
+End Sub
+
+Private Sub cmd8_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "8"
+Else
+txtDisplay.Text = txtDisplay.Text & "8"
+End If
+End Sub
+
+Private Sub cmd9_Click()
+If txtDisplay.Text = "0" Then
+txtDisplay.Text = "9"
+Else
+txtDisplay.Text = txtDisplay.Text & "9"
+End If
+End Sub
+
+Private Sub cmdClear_Click()
+txtDisplay.Text = "0"
+End Sub
+
+Private Sub cmdDiv_Click()
+num_1 = txtDisplay.Text
+txtDisplay.Text = ""
+operators = "/"
+End Sub
+
+Private Sub cmdEqu_Click()
+num_2 = txtDisplay.Text
+If operators = "+" Then
+result = num_1 + num_2
+txtDisplay.Text = result
+ElseIf operators = "-" Then
+result = num_1 - num_2
+txtDisplay.Text = result
+ElseIf operators = "/" Then
+result = num_1 / num_2
+txtDisplay.Text = result
+ElseIf operators = "*" Then
+result = num_1 * num_2
+txtDisplay.Text = result
+End If
+
+End Sub
+
+Private Sub cmdMinus_Click()
+num_1 = txtDisplay.Text
+txtDisplay.Text = ""
+operators = "-"
+End Sub
+
+Private Sub cmdMult_Click()
+num_1 = txtDisplay.Text
+txtDisplay.Text = ""
+operators = "*"
+End Sub
+
+Private Sub cmdPlus_Click()
+num_1 = txtDisplay.Text
+txtDisplay.Text = ""
+operators = "+"
+End Sub
+
+
+
+
+
+
